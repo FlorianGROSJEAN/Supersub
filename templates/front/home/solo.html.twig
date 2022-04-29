@@ -10,54 +10,17 @@
 
     <div class="solo_content">
 
+        {% for solo in solos %}
+            
         <div class="solo_content_card" >
-                <img class="solo_image" src="{{ asset('assets/images/cerf.jpg') }}" alt="">
+                <img class="solo_image" src="{{ asset('assets/images/' ~ solo.media) }}" alt="">
             <div class="solo_image_text">
-                <p class="card-text">Ultra modern</p>
+                <p class="card-text">{{solo.title}}</p>
             </div>
         </div>
 
-        <div class="solo_content_card" >
-                <img class="solo_image" src="{{ asset('assets/images/cerf.jpg') }}" alt="">
-            <div class="solo_image_text">
-                <p class="card-text">“Maybe tonight, not tomorrow” (EP - 2020) “Maybe tonight, not tomorrow” (EP - 2020)</p>
-            </div>
-        </div>
-
-        <div class="solo_content_card" >
-                <img class="solo_image" src="{{ asset('assets/images/cerf.jpg') }}" alt="">
-            <div class="solo_image_text">
-                <p class="card-text">Ultra modern</p>
-            </div>
-        </div>
-
-        <div class="solo_content_card" >
-                <img class="solo_image" src="{{ asset('assets/images/cerf.jpg') }}" alt="">
-            <div class="solo_image_text">
-                <p class="card-text">Ultra modern</p>
-            </div>
-        </div>
-
-        <div class="solo_content_card" >
-                <img class="solo_image" src="{{ asset('assets/images/cerf.jpg') }}" alt="">
-            <div class="solo_image_text">
-                <p class="card-text">Ultra modern</p>
-            </div>
-        </div>
-
-        <div class="solo_content_card" >
-                <img class="solo_image" src="{{ asset('assets/images/cerf.jpg') }}" alt="">
-            <div class="solo_image_text">
-                <p class="card-text">Ultra modern</p>
-            </div>
-        </div>
-
-    </div>
-
-        <div class="soundcloud">
-        <div class="soundclound-url">
-        <a href="" target="_blank">SOUNDCLOUND Supersub</a>
-        </div>
+        {% endfor %}
+        
     </div>
 
 </div>

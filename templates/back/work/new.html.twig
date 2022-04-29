@@ -1,0 +1,9 @@
+{% extends "front/base.html.twig" %}
+
+{% block body %}
+    <h1>Create new Work</h1>
+
+    {{ include('back/work/_form.html.twig') }}
+
+    <a href="{{ path('back_home') }}">back to list</a>
+{% endblock %}

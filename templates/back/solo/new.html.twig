@@ -1,0 +1,9 @@
+{% extends "front/base.html.twig" %}
+
+{% block body %}
+    <h1>Create new Solo</h1>
+
+    {{ include('back/solo/_form.html.twig') }}
+
+    <a href="{{ path('solo_index') }}">back to list</a>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'front/base.html.twig' %}
+
+{% block title %}Nicolas Crelier{% endblock %}
+
+{% block body %}
+
+<div class="container">
+
+    <div class="work_links">
+        <div class="work_links-url">
+        <a href="https://www.cdm-music.com/search/?composer=5529 " target="_blank">Editions CDM-MUSIC</a>
+        <a href="https://soundcloud.com/user-400236548 " target="_blank">SOUNDCLOUND</a>
+        </div>
+    </div>
+
+    <div class="work_videos">
+
+        {% for work in works %}
+            
+        <div class="work_videos-card" >
+            <div class="video_content"></div>
+            <iframe width="640" height="360" src="{{ work.media}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div class="card-body">
+                <p class="card-text">{{work.title}}</p>
+            </div>
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+
+
+{% endblock %}

@@ -30,7 +30,7 @@ class WorkFixtures extends Fixture
             [
                 'title' => 'Bande annonce (« Saucisse : une tradition hachée menu ? » doc France 5)',
                 'description' => '',
-                'media' => '"https://www.dailymotion.com/embed/video/x87cx8g?autoplay=0',
+                'media' => 'https://www.dailymotion.com/embed/video/x87cx8g?autoplay=0',
             ],
 
             ];

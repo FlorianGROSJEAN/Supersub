@@ -1,0 +1,12 @@
+{% extends "front/base.html.twig" %}
+
+
+{% block body %}
+    <h1>Edit Work</h1>
+
+    {{ include('back/work/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('back_home') }}">back to list</a>
+
+    {{ include('back/work/_delete_form.html.twig') }}
+{% endblock %}

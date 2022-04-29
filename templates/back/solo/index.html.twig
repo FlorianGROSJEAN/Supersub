@@ -1,0 +1,38 @@
+{% extends "front/base.html.twig" %}
+
+{% block body %}
+    <h1>Solo index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Media</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for solo in solos %}
+            <tr>
+                <td>{{ solo.id }}</td>
+                <td>{{ solo.title }}</td>
+                <td>{{ solo.description }}</td>
+                <td>{{ solo.media }}</td>
+                <td>
+                    <a href="{{ path('solo_show', {'id': solo.id}) }}">show</a>
+                    <a href="{{ path('solo_edit', {'id': solo.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('solo_new') }}">Create new</a>
+    <a href="{{ path('back_home') }}">Back home</a>
+{% endblock %}
