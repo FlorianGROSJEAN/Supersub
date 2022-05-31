@@ -32,6 +32,17 @@ class WorkFixtures extends Fixture
                 'description' => '',
                 'media' => 'https://www.dailymotion.com/embed/video/x87cx8g?autoplay=0',
             ],
+            [
+                'title' => 'Bande annonce (« Saucisse : une tradition hachée menu ? » doc France 5)',
+                'description' => '',
+                'media' => 'https://www.dailymotion.com/embed/video/x87cx8g?autoplay=0',
+            ],
+            [
+                'title' => 'La Maison France 5 - Bordeaux (France 5)',
+                'description' => '',
+                'media' => 'https://www.youtube.com/embed/sWpR-QeSdVQ',
+            ],
+            
 
             ];
 
@@ -41,6 +52,7 @@ class WorkFixtures extends Fixture
 
                 $work->setTitle($data['title']);
                 $work->setMedia($data['media']);
+                $work->setDescription($data['description']);
 
                 $manager->persist($work);
             }

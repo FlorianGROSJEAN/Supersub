@@ -1,27 +1,56 @@
 {# {% set currentRoute = app.request.get('_route') %} #}
+{% set currentRoute = app.request.get('_route') %}
 
-<div class="name">
-    <h1>nicolas crelier</h1>
 
-    <h2>musical composition for projects</h2>
-</div>
+
+
 
 <nav class="navbar">
-	<div class="navbar_container">
-        <ul class="navbar_nav">
-            <li class="nav-item">
-            <a  class="nav-link active" href="{{ path('work') }}">tv / radio</a>
-            </li>
-            <li class="nav-item">
-            <a  class="nav-link" href="{{ path('solo') }}">projet artistique solo</a>
-            </li>
-            <li class="nav-item">
-            <a  class="nav-link" href="{{ path('contact') }}">contact</a>
-            </li>
-            <li class="nav-item">
-            <a  class="nav-link" href="{{ path('back_home') }}">backoffice</a>
-            </li>
-        </ul>
 
+  <div class="name">
+    <h1>Nicolas Crelier</h1>
+
+    <h2>musical composition for projects</h2>
+  </div>
+
+    <div class="navbar_container">
+          <ul class="navbar_nav">
+              <li class="nav-item">
+              <a  class="nav-link link_effect {{ currentRoute == 'work' ? ' active':'' }}" href="{{ path('work') }}">tv / radio</a>
+              </li>
+              <li class="nav-item">
+              <a  class="nav-link link_effect {{ currentRoute == 'solo' ? ' active':'' }}"  href="{{ path('solo') }}">projet artistique solo</a>
+              </li>
+              <li class="nav-item">
+              <a  class="nav-link link_effect {{ currentRoute == 'contact' ? ' active':'' }}" href="{{ path('contact') }}">contact</a>
+              </li>
+              {% if is_granted('ROLE_ADMIN')  %}
+              <li class="nav-item">
+              <a  class="nav-link link_effect {{ currentRoute == 'back_home' ? ' active':'' }}"  href="{{ path('back_home') }}">backoffice</a>
+              </li>
+              {% endif %}
+          </ul>
+      </div>
+
+      <div id="mySidenav" class="sidenav">
+        <a id="closeBtn" href="#" class="close">×</a>
+        <ul>
+          <li><a href="{{ path('work') }}">Tv / Radio</a></li>
+          <li><a href="{{ path('solo') }}">Projet artistique solo</a></li>
+          <li><a href="{{ path('contact') }}">Contact</a></li>
+          {% if is_granted('ROLE_ADMIN')  %}
+          <li><a href="{{ path('back_home') }}">Backoffice</a></li>
+          {% endif %}
+        </ul>
     </div>
+      
+    <a href="#" id="openBtn">
+      <span class="burger-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </a>  
+
+
 </nav>

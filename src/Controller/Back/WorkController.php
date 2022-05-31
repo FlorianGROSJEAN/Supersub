@@ -5,6 +5,7 @@ namespace App\Controller\Back;
 use App\Entity\Work;
 use App\Form\WorkType;
 use App\Repository\WorkRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -12,6 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @Route("/back/work")
+ * @IsGranted("ROLE_ADMIN")
  */
 class WorkController extends AbstractController
 {
@@ -36,7 +38,7 @@ class WorkController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $workRepository->add($work);
-            return $this->redirectToRoute('app_back_work_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('work_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('back/work/new.html.twig', [
@@ -65,7 +67,7 @@ class WorkController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $workRepository->add($work);
-            return $this->redirectToRoute('app_back_work_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('work_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('back/work/edit.html.twig', [
@@ -83,6 +85,6 @@ class WorkController extends AbstractController
             $workRepository->remove($work);
         }
 
-        return $this->redirectToRoute('app_back_work_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('work_index', [], Response::HTTP_SEE_OTHER);
     }
 }

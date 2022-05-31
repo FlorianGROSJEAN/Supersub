@@ -32,6 +32,16 @@ class Solo
      */
     private $media;
 
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $link;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $Image;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -69,6 +79,30 @@ class Solo
     public function setMedia(?string $media): self
     {
         $this->media = $media;
+
+        return $this;
+    }
+
+    public function getLink(): ?string
+    {
+        return $this->link;
+    }
+
+    public function setLink(?string $link): self
+    {
+        $this->link = $link;
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->Image;
+    }
+
+    public function setImage(?string $Image): self
+    {
+        $this->Image = $Image;
 
         return $this;
     }

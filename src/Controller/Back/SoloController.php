@@ -5,6 +5,8 @@ namespace App\Controller\Back;
 use App\Entity\Solo;
 use App\Form\SoloType;
 use App\Repository\SoloRepository;
+use App\Service\ImageUploader;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -12,6 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @Route("/back/solo")
+ * @IsGranted("ROLE_ADMIN")
  */
 class SoloController extends AbstractController
 {
@@ -28,15 +31,22 @@ class SoloController extends AbstractController
     /**
      * @Route("/new", name="solo_new", methods={"GET", "POST"})
      */
-    public function new(Request $request, SoloRepository $soloRepository): Response
+    public function new(Request $request, SoloRepository $soloRepository, ImageUploader $imageUploader): Response
     {
         $solo = new Solo();
         $form = $this->createForm(SoloType::class, $solo);
         $form->handleRequest($request);
 
+
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $image = $form->get('media')->getData();
+            if ($image != null ) {
+                $imageUploader->uploadImage($form);
+            }
+
             $soloRepository->add($solo);
-            return $this->redirectToRoute('app_back_solo_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('solo_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('back/solo/new.html.twig', [
@@ -58,14 +68,19 @@ class SoloController extends AbstractController
     /**
      * @Route("/{id}/edit", name="solo_edit", methods={"GET", "POST"})
      */
-    public function edit(Request $request, Solo $solo, SoloRepository $soloRepository): Response
+    public function edit(Request $request, Solo $solo, SoloRepository $soloRepository, ImageUploader $imageUploader): Response
     {
         $form = $this->createForm(SoloType::class, $solo);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $image = $form->get('media')->getData();
+            if ($image != null ) {
+                $imageUploader->uploadImage($form);
+            }
             $soloRepository->add($solo);
-            return $this->redirectToRoute('app_back_solo_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('solo_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('back/solo/edit.html.twig', [
@@ -83,6 +98,6 @@ class SoloController extends AbstractController
             $soloRepository->remove($solo);
         }
 
-        return $this->redirectToRoute('app_back_solo_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('solo_index', [], Response::HTTP_SEE_OTHER);
     }
 }

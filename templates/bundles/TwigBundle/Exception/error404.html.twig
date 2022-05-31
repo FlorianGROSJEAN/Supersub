@@ -1,0 +1,15 @@
+{% extends "front/base.html.twig" %}
+
+{% block title %}Page non trouvée{% endblock %}
+
+{% block body %}
+<div class="main_error"></div>
+<div class="error_background">
+    <img src="{{ asset('assets/images/speaker-background.jpg')}}" class="speaker-img" alt="404" />
+</div>
+<div class="text_exception">
+    <p class="error_number">404</p>
+    <h1>La page recherchée n'a pas été trouvée.</h1>
+    <a href="{{ path('work') }}" class="exception_back_home">Retourner à l'accueil</a>
+</div>
+{% endblock %}

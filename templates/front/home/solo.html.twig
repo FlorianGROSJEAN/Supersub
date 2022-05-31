@@ -7,21 +7,50 @@
 <div class="container">
 
 
+    <div class="supersub_image">
+        <img class="supersub_image_content"src="{{ asset('assets/images/Supersub2.jpg') }}" alt="image supersub">
+    </div>
+
+
+    <section class="spotify_player">
+        <iframe class ="player" style="border-radius:12px" src="https://open.spotify.com/embed/artist/1leoSkEACXoKvmPlQ5FJnU?utm_source=generator"  frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" alt="lecteur spotify"></iframe>
+    </section>
+
+
 
     <div class="solo_content">
+
 
         {% for solo in solos %}
             
         <div class="solo_content_card" >
-                <img class="solo_image" src="{{ asset('assets/images/' ~ solo.media) }}" alt="">
-            <div class="solo_image_text">
-                <p class="card-text">{{solo.title}}</p>
+            <div class="solo_content_image">
+                {% if solo.image != null %}
+                <img  class="solo_image" src="{{ asset('assets/images/' ~ solo.image) }}" alt="image album">
+                {% endif %}
+                {% if solo.media != null %}
+                <iframe  class="video" src="{{ solo.media}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay;   clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen alt="clip video"></iframe>
+                {% endif %}
+            </div>
+            <div class="solo_content_text">
+                <p class="card_text" alt="titre album">{{solo.title}}</p>
+                {% if solo.link != null %}
+                <a href="{{solo.link}}" target="_blank"><i class="fa-solid fa-link"></i>{{solo.description}}</a>
+                {% endif %}
             </div>
         </div>
 
         {% endfor %}
+
+    
         
     </div>
+
+    <div class="soundcloud_solo">
+    <i class="fa-brands fa-soundcloud">
+    <a class="soundcloud_link_solo" href="https://soundcloud.com/supersubsupersub" target="_blank" alt="lien soundcloud Supersub"></i>Supersub</a>
+    </div>
+
 
 </div>
 

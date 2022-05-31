@@ -4,33 +4,38 @@
 
 {% block body %}
 
-<div class="container">
+<div class="main">
 
     <div class="work_links">
         <div class="work_links-url">
-        <a href="https://www.cdm-music.com/search/?composer=5529 " target="_blank">Editions CDM-MUSIC</a>
-        <a href="https://soundcloud.com/user-400236548 " target="_blank">SOUNDCLOUND</a>
+        <a href="https://www.cdm-music.com/search/?composer=5529 " target="_blank" alt="lien editions cdm-music">EDITIONS CDM-MUSIC</a>
+        <a href="https://soundcloud.com/user-400236548 " target="_blank" alt="lien soundcloud">SOUNDCLOUD</a>
         </div>
     </div>
 
     <div class="work_videos">
 
-        {% for work in works %}
-            
-        <div class="work_videos-card" >
-            <div class="video_content"></div>
-            <iframe width="640" height="360" src="{{ work.media}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            <div class="card-body">
-                <p class="card-text">{{work.title}}</p>
+        
+
+        <div class="work_videos_card " >
+
+            {% for work in works %}
+            <div class="card_content">
+                <div class="video_content">
+                    <iframe  class="video" src="{{ work.media}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay;   clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="card_body">
+                    <p class="card_text" alt="titre video">{{work.title}}</p>
+                    {% if work.description != null %}
+                    <p class="card_text" alt="description video">{{work.description}}</p>
+                    {% endif %}
+                </div>
             </div>
+            {% endfor %}
         </div>
 
-        {% endfor %}
+        
 
     </div>
-
-</div>
-
-
 
 {% endblock %}
