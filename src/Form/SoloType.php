@@ -25,7 +25,11 @@ class SoloType extends AbstractType
                 'label' => 'Description/Texte supplémentaire',
                 'required' => false,
             ])
-            ->add('media', FileType::class, [
+            ->add('media', TextType::class, [
+                'label' => 'Media/Url de vidéo',
+                'required' => false,
+            ])
+            ->add('image', FileType::class, [
                 'label' => 'Télécharger une image/pochette',
                 'mapped' => false,
                 'required' => false,

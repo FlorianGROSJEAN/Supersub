@@ -38,6 +38,9 @@ h1 {
 h2 {
     font-size: 1rem;
     font-family: Cocogoose_Italic;
+    text-align: center;
+    padding: 2rem;
+    line-height: 1.7rem;
 }
 
 
@@ -94,16 +97,17 @@ h2 {
   /* Close btn */
   .sidenav .close {
     position: absolute;
-    top: 12px;
-    right: 8px;
+    top: 8px;
+    right: 12px;
     font-size: 60px;
   }
   
   /* Icône burger */
 
   #openBtn {
-      display: flex;
-      justify-content: flex-end;
+      position: absolute;
+      top: 25px;
+      right: 20px;
   }
 
   .burger-icon span {
@@ -144,6 +148,7 @@ h2 {
     }
 
 } 
+
   
 .active {
     color: red;
@@ -174,7 +179,12 @@ h2 {
 
 /* WORK PAGE */
 
-
+h3{
+    display: flex;
+    justify-content: center;
+    font-family: Cocogoose_Italic;
+    margin: 2rem;
+}
 
 .card_content {
     padding: 2rem 1rem;
@@ -201,6 +211,17 @@ h2 {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+}
+
+.link-url{
+    margin: 0.5rem 4rem;
+    text-align: center;
+    line-height: 1.2rem;
+}
+
+.separator_line {
+    justify-content: center;
+    width: 60%;
 }
 
 
