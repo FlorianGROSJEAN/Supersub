@@ -15,3 +15,18 @@ function openNav() {
 function closeNav() {
   sidenav.classList.remove("active");
 }
+
+
+// Animation pour faire apparaitre le contenu 
+const sr = ScrollReveal ({
+  delay: 200,
+  origin: 'top',
+  distance: '40px',
+  duration: '1000'
+})
+
+// sr.reveal('.main');
+// sr.reveal('.container');
+sr.reveal('.solo_content_card', {delay: 100, reset: true});
+sr.reveal('.card_content', {delay: 100, reset: true});
+
